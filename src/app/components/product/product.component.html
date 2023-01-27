@@ -1,0 +1,19 @@
+<mat-card class="group/item">
+  <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" class="h-40 w-auto object-contain">
+  <mat-card-content>
+    <div class="mt-4">
+      <div class="h-28 flex flex-col justify-between">
+        <span class="block text-base font-medium text-slate-500 max-h-[72px] overflow-hidden">{{product.title}}</span>
+        <div class="flex justify-between">
+          <div class="mt-2 text-xl font-bold text-gray-800">$.{{product.price}}</div>
+          <div
+            (click)="onAddToShoppingCart(product)"
+            class="h-9 min-w-[36px] rounded-full flex items-center justify-center bg-purple-100 hover:bg-purple-200 hover:border-purple-400 cursor-pointer visible sm:invisible group-hover/item:visible"
+          >
+            <i class="fas fa-plus text-base text-purple-400"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
