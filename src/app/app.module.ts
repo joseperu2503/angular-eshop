@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatToolbarModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

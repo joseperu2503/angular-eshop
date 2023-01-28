@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -9,12 +9,16 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class ProductComponent {
   @Input() product: Product
-
+  @Output() showDetail = new EventEmitter()
   constructor(
     private storeService: StoreService
   ){}
 
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product)
+  }
+
+  onShowDetail(){
+    this.showDetail.emit()
   }
 }

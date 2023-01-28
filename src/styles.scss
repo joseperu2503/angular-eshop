@@ -41,9 +41,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 
 @layer base {
   * {
     font-family: 'Nunito', sans-serif;
   }
 }
+
+

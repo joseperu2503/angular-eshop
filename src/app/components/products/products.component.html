@@ -2,6 +2,19 @@
   <app-product
     *ngFor="let product of products"
     [product]="product"
+    (showDetail)="selectProduct(product.id)"
   >
   </app-product>
+</div>
+
+<div class="fixed top-16 right-0 bottom-0 w-96 bg-white shadow-md transition-all" [ngClass]="showProductDetail ? 'translate-x-0' : 'translate-x-full'">
+  <swiper
+    [pagination]="true"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide *ngFor="let image of productSelected.images">
+      <img [src]="image" alt="">
+    </ng-template>
+  </swiper>
+  <span>{{productSelected.title}}</span>
 </div>

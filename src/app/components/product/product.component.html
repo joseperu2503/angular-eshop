@@ -1,9 +1,20 @@
 <mat-card class="group/item">
-  <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" class="h-40 w-auto object-contain">
+  <img
+    mat-card-image
+    [src]="product.images[0]"
+    alt="Photo of a Shiba Inu"
+    class="h-40 w-auto object-contain cursor-pointer"
+    (click)="onShowDetail()"
+  >
   <mat-card-content>
     <div class="mt-4">
       <div class="h-28 flex flex-col justify-between">
-        <span class="block text-base font-medium text-slate-500 max-h-[72px] overflow-hidden">{{product.title}}</span>
+        <span
+          (click)="onShowDetail()"
+          class="block text-base font-medium text-slate-500 max-h-[72px] overflow-hidden cursor-pointer"
+        >
+          {{product.title}}
+        </span>
         <div class="flex justify-between">
           <div class="mt-2 text-xl font-bold text-gray-800">$.{{product.price}}</div>
           <div

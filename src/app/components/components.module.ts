@@ -4,18 +4,19 @@ import { ProductComponent } from './product/product.component';
 import { MatCardModule } from '@angular/material/card';
 import { ProductsComponent } from './products/products.component';
 import { HeaderComponent } from './header/header.component';
-
-
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
     ProductComponent,
     ProductsComponent,
     HeaderComponent,
+
   ],
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    SwiperModule,
   ],
   exports: [
     ProductComponent,
