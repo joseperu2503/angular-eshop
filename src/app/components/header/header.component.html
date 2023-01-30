@@ -1,4 +1,4 @@
-<div class="fixed bg-slate-50 left-0 right-0 z-10 py-4 px-5 sm:px-10 flex items-center justify-between shadow-md">
+<div class="fixed bg-slate-50 left-0 right-0 z-10 h-[68px] px-5 sm:px-10 flex items-center justify-between shadow-md">
   <i class="fas fa-bars text-xl text-gray-600 cursor-pointer block sm:hidden" (click)="toggle()"></i>
   <span class="text-2xl font-bold text-purple-800 cursor-pointer">E-shop</span>
   <div class="gap-4 text-gray-500 hidden sm:flex">
@@ -7,9 +7,14 @@
     <span class="cursor-pointer">Service</span>
     <span class="cursor-pointer">Contact</span>
   </div>
-  <i class="fas fa-shopping-cart text-xl text-gray-600 cursor-pointer relative">
-    <div class="absolute -top-2.5 -right-3 h-5 w-5 bg-purple-600 flex justify-center items-center text-white text-xs font-normal rounded-full">{{counter}}</div>
-  </i>
+  <div class="flex gap-2 items-center">
+    <span *ngIf="user" class="text-lg font-semibold text-gray-600">{{user.name}}</span>
+    <button *ngIf="!user" class="px-4 py-1.5 bg-purple-500 rounded text-white" (click)="login()">Login</button>
+    <i class="fas fa-shopping-cart text-xl text-gray-600 cursor-pointer relative">
+      <div class="absolute -top-2.5 -right-3 h-5 w-5 bg-purple-600 flex justify-center items-center text-white text-xs font-normal rounded-full">{{counter}}</div>
+    </i>
+  </div>
+
 </div>
 <div class="fixed bg-white top-0 right-0 left-0 bottom-0 z-10 transition-all block sm:hidden" [ngClass]="showSideBar ?'translate-x-0':'-translate-x-full'">
   <div class="flex justify-between h-14 items-center px-5 border-b">
