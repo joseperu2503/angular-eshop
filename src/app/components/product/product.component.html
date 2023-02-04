@@ -4,13 +4,13 @@
     [src]="product.images[0]"
     alt="Photo of a Shiba Inu"
     class="h-40 w-auto object-contain cursor-pointer"
-    (click)="onShowDetail()"
+    (click)="goToProduct()"
   >
   <mat-card-content>
     <div class="mt-4">
       <div class="h-28 flex flex-col justify-between">
         <span
-          (click)="onShowDetail()"
+          (click)="goToProduct()"
           class="block text-base font-medium text-slate-500 max-h-[72px] overflow-hidden cursor-pointer"
         >
           {{product.title}}

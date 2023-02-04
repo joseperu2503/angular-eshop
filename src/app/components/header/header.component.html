@@ -1,11 +1,17 @@
 <div class="fixed bg-slate-50 left-0 right-0 z-10 h-[68px] px-5 sm:px-10 flex items-center justify-between shadow-md">
   <i class="fas fa-bars text-xl text-gray-600 cursor-pointer block sm:hidden" (click)="toggle()"></i>
   <span class="text-2xl font-bold text-purple-800 cursor-pointer">E-shop</span>
-  <div class="gap-4 text-gray-500 hidden sm:flex">
-    <span class="cursor-pointer">Home</span>
-    <span class="text-purple-800 font-semibold cursor-pointer">Products</span>
-    <span class="cursor-pointer">Service</span>
-    <span class="cursor-pointer">Contact</span>
+  <div class="gap-4 text-gray-500 hidden sm:flex text-sm md:text-base">
+    <a
+      routerLink="/"
+      routerLinkActive="text-purple-800 font-semibold"
+      [routerLinkActiveOptions]="{exact: true}"
+    >Home</a>
+    <a
+      routerLinkActive="text-purple-800 font-semibold"
+      [routerLink]="['/category',item.id]"
+      *ngFor="let item of categories"
+    >{{item.name}}</a>
   </div>
   <div class="flex gap-2 items-center">
     <span *ngIf="user" class="text-lg font-semibold text-gray-600">{{user.name}}</span>
@@ -23,9 +29,15 @@
     <i class="fas fa-times text-xl text-slate-600 cursor-pointer" (click)="toggle()"></i>
   </div>
   <div class="flex flex-col gap-4 text-gray-500 py-4 px-6 text-xl">
-    <span class="cursor-pointer">Home</span>
-    <span class="text-purple-800 font-medium cursor-pointer">Products</span>
-    <span class="cursor-pointer">Service</span>
-    <span class="cursor-pointer">Contact</span>
+    <a
+      routerLink="/"
+      routerLinkActive="text-purple-800 font-semibold"
+      [routerLinkActiveOptions]="{exact: true}"
+    >Home</a>
+    <a
+      routerLinkActive="text-purple-800 font-medium"
+      [routerLink]="['/category',item.id]"
+      *ngFor="let item of categories"
+    >{{item.name}}</a>
   </div>
 </div>

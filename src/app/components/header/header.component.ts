@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -11,15 +13,28 @@ import { StoreService } from 'src/app/services/store.service';
 export class HeaderComponent implements OnInit {
   showSideBar: boolean = false
   counter: number = 0
+  categories: Category[] = []
   constructor(
     private storeService: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private categoriesService: CategoriesService
   ){}
 
   ngOnInit(): void {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length
     })
+    this.getAllCategories()
+  }
+
+  getAllCategories(){
+    this.categoriesService.getAllCategories()
+    .subscribe(
+      response => {
+        console.log(response)
+        this.categories = response
+      }
+    )
   }
 
   toggle(){
@@ -27,20 +42,18 @@ export class HeaderComponent implements OnInit {
     console.log(this.showSideBar)
   }
 
-  token = ''
   user: User | null = null
 
 
   login(){
-    this.authService.login('joseperu2503@gmail.com', 'luciusgibson')
+    this.authService.login('junior@gmail.com', '1234')
     .subscribe( response => {
-      this.token = response.access_token
-      this.getProfile(this.token)
+      this.getProfile()
     })
   }
 
-  getProfile(token: string){
-    this.authService.profile(token)
+  getProfile(){
+    this.authService.profile()
     .subscribe( response => {
       this.user = response
     })

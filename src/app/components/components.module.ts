@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductsComponent } from './products/products.component';
 import { HeaderComponent } from './header/header.component';
 import { SwiperModule } from 'swiper/angular';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SwiperModule } from 'swiper/angular';
     CommonModule,
     MatCardModule,
     SwiperModule,
+    RouterModule
   ],
   exports: [
     ProductComponent,

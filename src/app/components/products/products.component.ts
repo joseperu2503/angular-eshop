@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CreateProductDTO, Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import SwiperCore, { Pagination } from "swiper";
@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit{
     private productsService: ProductsService
   ){}
 
-  products: Product[] = []
+  @Input() products: Product[] = []
   showProductDetail: boolean = false
   productSelected: Product = {
     id: 0,
@@ -31,10 +31,7 @@ export class ProductsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts()
-    .subscribe(response =>
-      this.products = response
-    )
+
   }
 
   selectProduct(id: number){
