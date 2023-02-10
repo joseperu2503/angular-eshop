@@ -1,5 +1,13 @@
 <div class="page-product">
-  <button (click)="goToBack()">Back</button>
+  <div class="flex gap-4">
+    <button (click)="goToBack()" class="text-gray-600 w-8 h-8 bg-purple-200 hover:bg-purple-300 rounded-full">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <button class="py-1 px-2 bg-purple-600 text-white w-min rounded mb-4" (click)="updateProduct()">Update</button>
+    <button (click)="deleteProduct()" class="py-1 px-2 bg-purple-600 text-white w-min rounded mb-4">
+      Delete
+    </button>
+  </div>
   <div class="detail" *ngIf="product">
     <div class="gallery">
       <swiper [slidesPerView]="1">

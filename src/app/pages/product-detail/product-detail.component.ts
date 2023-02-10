@@ -22,6 +22,10 @@ export class ProductDetailComponent implements OnInit {
   product: Product | null = null
 
   ngOnInit(): void {
+    this.getProduct()
+  }
+
+  getProduct(){
     this.route.paramMap
     .pipe(
       switchMap( params => {
@@ -39,6 +43,39 @@ export class ProductDetailComponent implements OnInit {
       }
     )
   }
+
+  updateProduct(){
+    if(this.product && this.productId){
+      this.productsService.update(this.productId,{
+        title: 'iphone 14',
+        categoryId: 1,
+        images: this.product?.images,
+        price: 2000,
+        description: 'asdadsfsdf dds'
+      })
+      .subscribe(
+        response => {
+          console.log(response)
+          this.getProduct()
+        }
+      )
+    }
+
+  }
+
+  deleteProduct(){
+    if(this.product && this.productId){
+      this.productsService.delete(this.productId)
+      .subscribe(
+        response => {
+          console.log(response)
+          this.goToBack()
+        }
+      )
+    }
+
+  }
+
 
   goToBack(){
     this.location.back()

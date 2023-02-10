@@ -23,6 +23,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { SwiperModule } from 'swiper/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SwiperModule } from 'swiper/angular';
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
-    SwiperModule
+    SwiperModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

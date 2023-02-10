@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private authService: AuthService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -44,18 +46,13 @@ export class HeaderComponent implements OnInit {
 
   user: User | null = null
 
-
-  login(){
-    this.authService.login('junior@gmail.com', '1234')
-    .subscribe( response => {
-      this.getProfile()
-    })
+  goLogin(){
+    this.router.navigate([`/login`])
   }
 
-  getProfile(){
-    this.authService.profile()
-    .subscribe( response => {
-      this.user = response
-    })
+  goRegister(){
+    this.router.navigate([`/register`])
   }
+
+
 }

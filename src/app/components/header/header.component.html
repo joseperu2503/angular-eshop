@@ -15,7 +15,9 @@
   </div>
   <div class="flex gap-2 items-center">
     <span *ngIf="user" class="text-lg font-semibold text-gray-600">{{user.name}}</span>
-    <button *ngIf="!user" class="px-4 py-1.5 bg-purple-500 rounded text-white" (click)="login()">Login</button>
+    <button *ngIf="!user" class="px-4 py-1.5 bg-purple-500 rounded text-white" (click)="goLogin()">Login</button>
+    <button *ngIf="!user" class="px-4 py-1.5 border border-purple-500 bg-white rounded text-purple-500" (click)="goRegister()">Register</button>
+
     <i class="fas fa-shopping-cart text-xl text-gray-600 cursor-pointer relative">
       <div class="absolute -top-2.5 -right-3 h-5 w-5 bg-purple-600 flex justify-center items-center text-white text-xs font-normal rounded-full">{{counter}}</div>
     </i>

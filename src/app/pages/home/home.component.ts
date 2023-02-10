@@ -15,10 +15,19 @@ export class HomeComponent {
   ){}
 
   ngOnInit(): void {
+    this.loadProducts()
+  }
+
+  loadProducts(){
     this.productsService.getAllProducts()
-    .subscribe(response =>
-      this.products = response
-    )
+    .subscribe({
+      next: response =>{
+        this.products = response.reverse()
+      },
+      error: error => {
+        console.log('error',error)
+      }
+    })
   }
 
 }

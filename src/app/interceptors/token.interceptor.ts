@@ -27,6 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if(request.context.get(CHECK_AUTH)){
       request = this.addToken(request)
     }
+
     return next.handle(request);
   }
 

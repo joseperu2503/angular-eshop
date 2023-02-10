@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CreateProductDTO, Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import SwiperCore, { Pagination } from "swiper";
@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit{
   ){}
 
   @Input() products: Product[] = []
+  @Output() loadProducts = new EventEmitter()
   showProductDetail: boolean = false
   productSelected: Product = {
     id: 0,
@@ -45,7 +46,7 @@ export class ProductsComponent implements OnInit{
 
   createNewProduct(){
     const product: CreateProductDTO = {
-      title: 'Nueo producto',
+      title: 'producto junior',
       description: 'bla bla bla ',
       images: [`https://placeimg.com/640/480/any?random=${Math.random()}`],
       price: 1000,
@@ -55,6 +56,7 @@ export class ProductsComponent implements OnInit{
     this.productsService.create(product)
     .subscribe( response => {
       console.log('created', response)
+      this.loadProducts.emit()
     })
   }
 }
