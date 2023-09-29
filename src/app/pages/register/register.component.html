@@ -1,1 +1,59 @@
-<button class="px-4 py-1.5 bg-purple-500 rounded text-white" (click)="register()">Register</button>
+<div class="w-full max-w-md mx-auto shadow-lg px-8 py-12 rounded-xl absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
+  <h2 class="text-3xl font-bold text-purple-800 text-center">E-shop</h2>
+  <h3 class="mt-5 text-gray-500 font-semibold">Create your account!</h3>
+  <form [formGroup]="form" (ngSubmit)="register()" class="flex flex-col gap-4 mt-6">
+    <div class="flex flex-col">
+      <label class="text-gray-800">Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="px-2 py-1 border border-purple-500 rounded-md  outline-purple-400"
+        [ngClass]="{
+          'border-indigo-600': name.touched && name.valid,
+          'border-red-600': name.touched && name.invalid
+        }"
+      >
+      <div class="opacity-0 transition-all flex" [ngClass]="{'opacity-100': name.touched && name.invalid}">
+        <span class="text-xs text-red-400" *ngIf="name.touched && name.hasError('required')">This field is required</span>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <label class="text-gray-800">Email</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="px-2 py-1 border border-purple-500 rounded-md  outline-purple-400"
+        [ngClass]="{
+          'border-indigo-600': email.touched && email.valid,
+          'border-red-600': email.touched && email.invalid
+        }"
+      >
+      <div class="opacity-0 transition-all flex" [ngClass]="{'opacity-100': email.touched && email.invalid}">
+        <span class="text-xs text-red-400" *ngIf="email.touched && email.hasError('required')">This field is required</span>
+        <span class="text-xs text-red-400" *ngIf="email.touched && email.hasError('email')">Please enter a valid email</span>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <label class="text-gray-800">Password</label>
+      <input
+        type="text"
+        formControlName="password"
+        class="px-2 py-1 border border-purple-500 rounded-md  outline-purple-400"
+        [ngClass]="{
+          'border-indigo-600': password.touched && password.valid,
+          'border-red-600': password.touched && password.invalid
+        }"
+      >
+      <div class="opacity-0 transition-all flex" [ngClass]="{'opacity-100': password.touched && password.invalid}">
+        <span class="text-xs text-red-400" *ngIf="password.touched && password.hasError('required')">This field is required</span>
+        <span class="text-xs text-red-400" *ngIf="password.touched && password.hasError('minlength')">the password must be at least 6 characters</span>
+        <span class="text-xs text-red-400" *ngIf="password.touched && password.hasError('invalid_password')">the password must be at least 1 number</span>
+      </div>
+    </div>
+    <button
+      class="mt-4 px-4 py-1.5 bg-purple-500 rounded text-white disabled:bg-purple-300"
+    >
+      Sign Up
+    </button>
+  </form>
+</div>

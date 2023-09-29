@@ -13,8 +13,8 @@
         }"
       >
       <div class="opacity-0 transition-all flex" [ngClass]="{'opacity-100': email?.touched && email?.invalid}">
-        <span class="text-xs text-red-400" *ngIf="email?.touched && email?.hasError('required')">Este campo es requerido</span>
-        <span class="text-xs text-red-400" *ngIf="email?.touched && email?.hasError('email')">Ingresa un email valido</span>
+        <span class="text-xs text-red-400" *ngIf="email?.touched && email?.hasError('required')">This field is required</span>
+        <span class="text-xs text-red-400" *ngIf="email?.touched && email?.hasError('email')">Please enter a valid email</span>
       </div>
     </div>
     <div class="flex flex-col">
@@ -29,7 +29,7 @@
         }"
       >
       <div class="opacity-0 transition-all flex" [ngClass]="{'opacity-100': password?.touched && password?.invalid}">
-        <span class="text-xs text-red-400" *ngIf="password?.touched && password?.hasError('required')">Este campo es requerido</span>
+        <span class="text-xs text-red-400" *ngIf="password?.touched && password?.hasError('required')">This field is required</span>
       </div>
     </div>
     <button
